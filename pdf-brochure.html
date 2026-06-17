@@ -1,0 +1,606 @@
+<!doctype html>
+<html lang="hr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Radni plan uvođenja Cibona Tixety sustava</title>
+  <style>
+    :root {
+      --ink: #070821;
+      --muted: #5f6778;
+      --line: #dce6f2;
+      --paper: #ffffff;
+      --soft: #f4f8fd;
+      --navy: #050432;
+      --blue: #116bc5;
+      --cyan: #20d6ee;
+      --green: #11a26c;
+      --red: #ef1b2d;
+      --shadow: 0 18px 46px rgba(8, 21, 48, .12);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      color: var(--ink);
+      background: #d9e2ee;
+      line-height: 1.42;
+    }
+
+    @page {
+      size: A4;
+      margin: 0;
+    }
+
+    .page {
+      position: relative;
+      width: 210mm;
+      height: 297mm;
+      overflow: hidden;
+      padding: 17mm 18mm 15mm;
+      background: var(--paper);
+      page-break-after: always;
+      print-color-adjust: exact;
+      -webkit-print-color-adjust: exact;
+    }
+
+    .page::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 88% 14%, transparent 0 35mm, rgba(17, 107, 197, .055) 35.5mm 38mm, transparent 38.5mm),
+        repeating-linear-gradient(58deg, transparent 0 17mm, rgba(5, 4, 50, .035) 17.4mm 18mm, transparent 18.4mm 35mm),
+        repeating-linear-gradient(122deg, transparent 0 17mm, rgba(17, 107, 197, .03) 17.4mm 18mm, transparent 18.4mm 35mm);
+      opacity: .7;
+    }
+
+    .page.dark {
+      color: #fff;
+      background:
+        linear-gradient(122deg, rgba(5, 4, 50, .98) 0%, rgba(5, 4, 50, .94) 52%, rgba(17, 107, 197, .88) 100%);
+    }
+
+    .page.dark::before {
+      opacity: .18;
+      background:
+        radial-gradient(circle at 83% 24%, transparent 0 38mm, rgba(255, 255, 255, .2) 38.5mm 41mm, transparent 41.5mm),
+        repeating-linear-gradient(58deg, transparent 0 18mm, rgba(255, 255, 255, .08) 18.4mm 19mm, transparent 19.4mm 37mm),
+        repeating-linear-gradient(122deg, transparent 0 18mm, rgba(255, 255, 255, .07) 18.4mm 19mm, transparent 19.4mm 37mm);
+    }
+
+    .content {
+      position: relative;
+      z-index: 1;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .topline {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12mm;
+      min-height: 14mm;
+      margin-bottom: 15mm;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 4mm;
+      font-weight: 900;
+      letter-spacing: .01em;
+    }
+
+    .brand img {
+      width: 12mm;
+      height: 12mm;
+      padding: 2mm;
+      border-radius: 2mm;
+      background: #fff;
+      box-shadow: 0 6px 16px rgba(5, 4, 50, .16);
+    }
+
+    .eyebrow {
+      margin: 0 0 4mm;
+      color: var(--cyan);
+      font-size: 8.5pt;
+      font-weight: 950;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin-top: 0;
+    }
+
+    h1 {
+      max-width: 155mm;
+      margin-bottom: 8mm;
+      font-size: 42pt;
+      line-height: .93;
+      letter-spacing: 0;
+    }
+
+    h2 {
+      max-width: 150mm;
+      margin-bottom: 5mm;
+      color: var(--navy);
+      font-size: 27pt;
+      line-height: 1.04;
+      letter-spacing: 0;
+    }
+
+    .dark h2,
+    .dark .lead,
+    .dark h3 {
+      color: #fff;
+    }
+
+    .lead {
+      max-width: 164mm;
+      margin-bottom: 9mm;
+      color: var(--muted);
+      font-size: 14pt;
+    }
+
+    .cover-copy {
+      max-width: 162mm;
+      color: rgba(255, 255, 255, .84);
+      font-size: 15pt;
+    }
+
+    .meta-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 7mm;
+      margin-top: 18mm;
+      padding-top: 9mm;
+      border-top: 1px solid rgba(255, 255, 255, .18);
+    }
+
+    .meta-item {
+      color: rgba(255, 255, 255, .78);
+      font-size: 11pt;
+    }
+
+    .meta-item strong {
+      display: block;
+      margin-bottom: 2mm;
+      color: #fff;
+      font-size: 8pt;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .cover-focus {
+      margin-top: auto;
+      display: grid;
+      grid-template-columns: 38mm 1fr;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 3mm;
+      background: rgba(255, 255, 255, .09);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, .16);
+      backdrop-filter: blur(14px);
+    }
+
+    .cover-date {
+      display: grid;
+      place-items: center;
+      background: rgba(32, 214, 238, .18);
+      color: var(--cyan);
+      font-size: 18pt;
+      font-weight: 950;
+    }
+
+    .focus-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0;
+    }
+
+    .focus-list div {
+      min-height: 24mm;
+      padding: 6mm;
+      border-left: 1px solid rgba(255, 255, 255, .14);
+      border-bottom: 1px solid rgba(255, 255, 255, .12);
+      color: rgba(255, 255, 255, .82);
+      font-size: 10.5pt;
+    }
+
+    .focus-list strong {
+      display: block;
+      color: #fff;
+      font-size: 9pt;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 10mm;
+      color: var(--muted);
+      font-size: 8.5pt;
+      font-weight: 850;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+    }
+
+    .section-label span:first-child {
+      color: var(--cyan);
+    }
+
+    .note {
+      margin: 8mm 0 10mm;
+      padding: 6mm 7mm;
+      border-left: 1.5mm solid var(--green);
+      border-radius: 3mm;
+      background: rgba(17, 162, 108, .09);
+      color: #203f33;
+      font-size: 12pt;
+    }
+
+    .note.blue {
+      border-left-color: var(--blue);
+      background: rgba(17, 107, 197, .09);
+      color: #20374e;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 6mm;
+    }
+
+    .grid.three {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .card {
+      min-height: 42mm;
+      padding: 7mm;
+      border: 1px solid var(--line);
+      border-radius: 3mm;
+      background: rgba(255, 255, 255, .92);
+      box-shadow: var(--shadow);
+    }
+
+    .card.compact {
+      min-height: 38mm;
+    }
+
+    .num {
+      display: inline-grid;
+      place-items: center;
+      min-width: 11mm;
+      height: 11mm;
+      margin-bottom: 7mm;
+      padding: 0 3mm;
+      border-radius: 2.5mm;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10pt;
+      font-weight: 950;
+    }
+
+    h3 {
+      margin-bottom: 3mm;
+      color: var(--navy);
+      font-size: 16pt;
+      line-height: 1.12;
+    }
+
+    .card p,
+    td,
+    .timeline p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 11pt;
+    }
+
+    .wide-card {
+      display: grid;
+      grid-template-columns: 37mm 1fr;
+      gap: 7mm;
+      align-items: center;
+      margin-top: 7mm;
+      padding: 7mm;
+      border-radius: 3mm;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .wide-card strong {
+      display: block;
+      font-size: 20pt;
+      line-height: 1;
+    }
+
+    .wide-card span {
+      color: rgba(255, 255, 255, .74);
+      font-size: 10pt;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+    }
+
+    .wide-card p {
+      margin: 0;
+      color: rgba(255, 255, 255, .84);
+      font-size: 12pt;
+    }
+
+    table {
+      width: 100%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 3mm;
+      border-collapse: separate;
+      border-spacing: 0;
+      background: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    th {
+      padding: 5mm 6mm;
+      background: var(--navy);
+      color: #fff;
+      text-align: left;
+      font-size: 8.5pt;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    td {
+      padding: 6mm;
+      border-top: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    td:first-child {
+      width: 27%;
+      color: var(--ink);
+      font-weight: 900;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 4mm;
+      margin-top: 7mm;
+    }
+
+    .timeline-row {
+      display: grid;
+      grid-template-columns: 34mm 1fr 1.1fr;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 3mm;
+      background: rgba(255, 255, 255, .94);
+      box-shadow: 0 10px 28px rgba(8, 21, 48, .08);
+    }
+
+    .timeline-date {
+      display: grid;
+      align-content: center;
+      padding: 5mm;
+      background: var(--navy);
+      color: #fff;
+      font-size: 10.5pt;
+      font-weight: 950;
+    }
+
+    .timeline-cell {
+      padding: 5mm;
+    }
+
+    .timeline-cell strong {
+      display: block;
+      margin-bottom: 1.5mm;
+      color: var(--ink);
+      font-size: 11pt;
+    }
+
+    .footer {
+      margin-top: auto;
+      display: flex;
+      justify-content: space-between;
+      gap: 10mm;
+      padding-top: 7mm;
+      border-top: 1px solid rgba(5, 4, 50, .12);
+      color: var(--muted);
+      font-size: 8.5pt;
+    }
+
+    .dark .footer {
+      border-top-color: rgba(255, 255, 255, .18);
+      color: rgba(255, 255, 255, .68);
+    }
+
+    .conclusion {
+      margin-top: auto;
+      padding: 10mm;
+      border-radius: 4mm;
+      background: var(--navy);
+      color: #fff;
+      box-shadow: var(--shadow);
+    }
+
+    .conclusion h2 {
+      color: #fff;
+      margin-bottom: 4mm;
+    }
+
+    .conclusion p {
+      margin: 0;
+      color: rgba(255, 255, 255, .82);
+      font-size: 13pt;
+    }
+  </style>
+</head>
+<body>
+  <section class="page dark">
+    <div class="content">
+      <div class="topline">
+        <div class="brand"><img src="assets/cibona-logo.png" alt="" />Tixety / Cibona</div>
+        <div class="eyebrow">Specifikacija / plan pokretanja prodaje</div>
+      </div>
+
+      <h1>Radni plan uvođenja Cibona Tixety sustava</h1>
+      <p class="cover-copy">Plan za Cibona ticketing kroz postojeći fanshop, Tixety prodajni link i Stripe payment sloj.</p>
+
+      <div class="meta-strip">
+        <div class="meta-item"><strong>Izvođač</strong>ORKA d.o.o.</div>
+        <div class="meta-item"><strong>Klijent</strong>Cibona</div>
+        <div class="meta-item"><strong>Datum</strong>17.06.2026.</div>
+      </div>
+
+      <div class="cover-focus">
+        <div class="cover-date">10.07.</div>
+        <div class="focus-list">
+          <div><strong>1</strong>Postaviti ispravno sjedala i shemu rasporeda sjedenja.</div>
+          <div><strong>2</strong>Definirati cijene i proizvode/karte.</div>
+          <div><strong>3</strong>Povezati fanshop, Tixety link i Stripe testni tok.</div>
+          <div><strong>4</strong>Provesti testne kupnje i otvoriti prodaju.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="content">
+      <div class="section-label"><span>Cilj dokumenta</span><span>01</span></div>
+      <h2>Najkraći siguran put do početka prodaje</h2>
+      <p class="lead">U prvoj fazi cilj je uspostaviti preduvjete za prodaju karata, vezanih i upsell proizvoda te pripremiti se za prve utakmice ili simulacije. Nakon toga cilj je nastavak implementacije ostalih white-label sustava Tixety: direktni checkout, sezonske karte, korisnički profili, scanner, CRM, fan commerce, fiskalizacija i sustav za ulazak u dvoranu.</p>
+      <div class="note">Kupac na dan 10.07.2026. može kupiti ulaznicu preko dogovorenog fanshop/e-commerce toka i/ili Tixety prodajnog linka.</div>
+
+      <div class="grid">
+        <article class="card"><span class="num">1</span><h3>E-commerce integracija</h3><p>Povezivanje Tixety prodajne logike s postojećim dobavljačem fanshopa.</p></article>
+        <article class="card"><span class="num">2</span><h3>Stripe payment</h3><p>Stripe kao primarni provider za kartice, Apple Pay i Google Pay.</p></article>
+        <article class="card"><span class="num">3</span><h3>Otvorena arhitektura</h3><p>Monri se uključuje nakon potrebnih potpisivanja i integracije s njima, a payment sloj ostaje spreman i za druge providere.</p></article>
+        <article class="card"><span class="num">4</span><h3>Go-live 10.07.</h3><p>Kupac može kupiti ulaznicu preko fanshopa i/ili Tixety linka.</p></article>
+      </div>
+
+      <div class="footer"><span>Tixety / Cibona</span><span>01</span></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="content">
+      <div class="section-label"><span>Faza 1</span><span>02</span></div>
+      <h2>Start prodaje do 10.07.</h2>
+      <p class="lead">Tixety se postavlja kao prodajni i integracijski sloj koji koristi postojeći fanshop/e-commerce kanal za što brži izlazak na tržište.</p>
+
+      <div class="grid">
+        <article class="card"><span class="num">A</span><h3>Ticket proizvodi</h3><p>Kategorije ulaznica, cijene, kontingenti, opisi proizvoda i pravila kupnje.</p></article>
+        <article class="card"><span class="num">B</span><h3>Fanshop povezivanje</h3><p>Tehnički način prikaza i kupnje ulaznica kroz postojeći fanshop ili povezani checkout.</p></article>
+        <article class="card"><span class="num">C</span><h3>Tixety prodajni link</h3><p>Link za kampanje, društvene mreže, newsletter, WhatsApp i objave na cibona.com.</p></article>
+        <article class="card"><span class="num">D</span><h3>Stripe checkout</h3><p>Kartice, Apple Pay i Google Pay kao primarni payment tok.</p></article>
+      </div>
+
+      <div class="wide-card">
+        <div><strong>10.07.</strong><span>Go-live</span></div>
+        <p>Prodajni tok mora kupcu omogućiti kupnju ulaznice preko dogovorenog fanshop/e-commerce toka i/ili Tixety prodajnog linka.</p>
+      </div>
+
+      <div class="footer"><span>Tixety / Cibona</span><span>02</span></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="content">
+      <div class="section-label"><span>Payment</span><span>03</span></div>
+      <h2>Odvojeni payment sloj</h2>
+      <p class="lead">Svaka narudžba evidentira providera preko kojeg je plaćena, a novi provider može se uključiti za buduće transakcije.</p>
+      <div class="note blue">Za 10.07. preporuka je najbrži siguran fiskalizacijski tok: postojeći fanshop ako je operativno spreman, ili Tixety fiskalizacija samo ako se može potvrditi bez rizika za rok.</div>
+
+      <table>
+        <thead>
+          <tr><th>Provider</th><th>Uloga</th><th>Napomena</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Stripe</td><td>Primarni provider za start prodaje do 10.07.</td><td>Kartice, Apple Pay i Google Pay kroz jedan payment sloj.</td></tr>
+          <tr><td>Monri</td><td>Opcija sljedeće faze.</td><td>Proradit će nakon potrebnih potpisivanja i integracije s Monrijem.</td></tr>
+          <tr><td>Aircash / KEKS</td><td>Kasniji lokalni dodatci.</td><td>Uključiti nakon go-livea prema poslovnoj potrebi i uvjetima.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="footer"><span>Tixety / Cibona</span><span>03</span></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="content">
+      <div class="section-label"><span>Timeline</span><span>04</span></div>
+      <h2>Plan provedbe do 10.07.</h2>
+
+      <div class="timeline">
+        <div class="timeline-row">
+          <div class="timeline-date">19.06. - 29.06.</div>
+          <div class="timeline-cell"><strong>Zaključavanje opsega</strong><p>Potvrditi proizvode, cijene, kontingente, shemu rasporeda sjedenja i kontakt s providerom aplikacije/fanshopa.</p></div>
+          <div class="timeline-cell"><strong>Isporuka</strong><p>Potvrđen prodajni model, ulazni podaci za sjedala i tehnički kontakt za integraciju.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-date">30.06. - 03.07.</div>
+          <div class="timeline-cell"><strong>Postavljanje prodajnog toka</strong><p>Konfigurirati proizvode, Tixety link i vezu s fanshopom.</p></div>
+          <div class="timeline-cell"><strong>Isporuka</strong><p>Stripe testni tok i prvi operativni prodajni scenariji.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-date">04.07. - 07.07.</div>
+          <div class="timeline-cell"><strong>Testiranje</strong><p>Testne kupnje, potvrde, izvještaji i operativne iznimke.</p></div>
+          <div class="timeline-cell"><strong>Isporuka</strong><p>Validiran checkout, narudžbe, potvrde i fiskalizacija.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-date">08.07. - 09.07.</div>
+          <div class="timeline-cell"><strong>Go-live priprema</strong><p>Završna provjera, objave linkova i podrška.</p></div>
+          <div class="timeline-cell"><strong>Isporuka</strong><p>Spreman eskalacijski kanal i komunikacijski paket.</p></div>
+        </div>
+        <div class="timeline-row">
+          <div class="timeline-date">10.07.</div>
+          <div class="timeline-cell"><strong>Početak prodaje</strong><p>Prodaja ulaznica kreće preko dogovorenog kanala.</p></div>
+          <div class="timeline-cell"><strong>Isporuka</strong><p>Fanshop i/ili Tixety prodajni link dostupni kupcima.</p></div>
+        </div>
+      </div>
+
+      <div class="footer"><span>Tixety / Cibona</span><span>04</span></div>
+    </div>
+  </section>
+
+  <section class="page">
+    <div class="content">
+      <div class="section-label"><span>Faza 2</span><span>05</span></div>
+      <h2>Puni Tixety / fan commerce</h2>
+
+      <div class="grid three">
+        <article class="card compact"><span class="num">1</span><h3>Direktni Tixety checkout</h3><p>Samostalni checkout s odabranim providerom.</p></article>
+        <article class="card compact"><span class="num">2</span><h3>Season ticket modeli</h3><p>Sezonske karte, obiteljski paketi, VIP paketi, poslovni paketi i članstvo.</p></article>
+        <article class="card compact"><span class="num">3</span><h3>Fanshop bundleovi</h3><p>Ulaznica + majica, ulaznica + šal, season ticket + fan paket.</p></article>
+        <article class="card compact"><span class="num">4</span><h3>CRM i fan intelligence</h3><p>Segmentacija navijača, povijest kupnji, kampanje i loyalty modeli.</p></article>
+        <article class="card compact"><span class="num">5</span><h3>Fiskalizacija</h3><p>Usklađen fiskalni tok za direktnu prodaju i buduće payment providere.</p></article>
+        <article class="card compact"><span class="num">6</span><h3>Ulazak u dvoranu</h3><p>Sustav za provjeru karata, skeniranje i operativnu kontrolu ulaza.</p></article>
+      </div>
+
+      <div class="conclusion">
+        <div class="eyebrow">Zaključak</div>
+        <h2>Predloženi smjer</h2>
+        <p>Za prvu fazu predlaže se kontrolirano pokretanje prodaje do 10.07. kroz postojeći fanshop/e-commerce kanal i Tixety prodajni link, uz Stripe kao primarni payment provider. Arhitektura ostaje otvorena za Monri i druge lokalne metode plaćanja u sljedećoj fazi.</p>
+      </div>
+
+      <div class="footer"><span>ORKA d.o.o. - Gajev trg 6 - 31000 Osijek - OIB 77396594560</span><span>05</span></div>
+    </div>
+  </section>
+</body>
+</html>

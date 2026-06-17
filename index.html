@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Tixety / Cibona - plan pokretanja prodaje</title>
+  <title>Radni plan uvođenja Cibona Tixety sustava</title>
   <style>
     :root {
       --ink: #101624;
@@ -76,9 +76,14 @@
       height: 36px;
       border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 8px;
-      background: linear-gradient(135deg, var(--cyan), var(--blue));
-      color: #050432;
-      font-weight: 900;
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .mark img {
+      width: 25px;
+      height: auto;
+      display: block;
     }
 
     .navlinks {
@@ -93,25 +98,32 @@
       color: #fff;
     }
 
+    .navlinks a.download-link {
+      padding: 8px 12px;
+      border: 1px solid rgba(255, 255, 255, .22);
+      border-radius: 8px;
+      color: #fff;
+      font-weight: 800;
+    }
+
     .hero {
       position: relative;
       overflow: hidden;
       color: #fff;
       background:
-        linear-gradient(105deg, rgba(5, 4, 50, .98) 0%, rgba(5, 4, 50, .9) 44%, rgba(5, 4, 50, .34) 100%),
-        url("https://images.unsplash.com/photo-1519861531473-9200262188bf?auto=format&fit=crop&w=1800&q=80") center/cover;
-      min-height: 690px;
+        linear-gradient(105deg, rgba(5, 4, 50, .98) 0%, rgba(5, 4, 50, .92) 46%, rgba(17, 107, 197, .72) 100%);
+      min-height: 560px;
     }
 
     .hero-inner {
       display: grid;
       grid-template-columns: minmax(0, 1.05fr) minmax(320px, .75fr);
-      align-items: end;
+      align-items: start;
       gap: 46px;
       width: min(1160px, calc(100% - 40px));
-      min-height: 626px;
+      min-height: 496px;
       margin: 0 auto;
-      padding: 92px 0 58px;
+      padding: 70px 0 42px;
     }
 
     .kicker {
@@ -169,6 +181,12 @@
       color: #fff;
     }
 
+    .button.accent {
+      border-color: rgba(35, 214, 238, .55);
+      background: var(--cyan);
+      color: var(--navy);
+    }
+
     .meta {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -192,7 +210,6 @@
     }
 
     .status-panel {
-      align-self: end;
       border: 1px solid rgba(255, 255, 255, .2);
       border-radius: 8px;
       background: rgba(255, 255, 255, .1);
@@ -205,7 +222,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 18px;
-      padding: 20px;
+      padding: 16px 18px;
       border-bottom: 1px solid rgba(255, 255, 255, .16);
     }
 
@@ -236,7 +253,7 @@
       display: grid;
       grid-template-columns: 28px 1fr;
       gap: 12px;
-      padding: 18px 20px;
+      padding: 14px 18px;
       background: rgba(5, 4, 50, .62);
       color: rgba(255, 255, 255, .78);
       font-size: 14px;
@@ -254,12 +271,35 @@
     }
 
     .section {
+      position: relative;
+      overflow: hidden;
       padding: 76px 0;
       border-bottom: 1px solid var(--line);
     }
 
+    .section::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 88% 18%, transparent 0 108px, rgba(17, 107, 197, .055) 109px 118px, transparent 119px 180px),
+        repeating-linear-gradient(58deg, transparent 0 54px, rgba(5, 4, 50, .035) 55px 57px, transparent 58px 112px),
+        repeating-linear-gradient(122deg, transparent 0 54px, rgba(17, 107, 197, .03) 55px 57px, transparent 58px 112px);
+      opacity: .44;
+    }
+
+    .section > .wrap {
+      position: relative;
+      z-index: 1;
+    }
+
     .section.alt {
       background: var(--soft);
+    }
+
+    .section.final::before {
+      display: none;
     }
 
     .wrap {
@@ -424,41 +464,6 @@
       color: var(--muted);
     }
 
-    .payment {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 18px;
-      align-items: stretch;
-    }
-
-    .payment-map {
-      display: grid;
-      gap: 12px;
-      padding: 24px;
-      border-radius: 8px;
-      background: var(--navy);
-      color: #fff;
-    }
-
-    .payment-node {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 18px;
-      min-height: 64px;
-      padding: 14px 16px;
-      border: 1px solid rgba(255, 255, 255, .14);
-      border-radius: 8px;
-      background: rgba(255, 255, 255, .08);
-    }
-
-    .payment-node small {
-      color: rgba(255, 255, 255, .65);
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
-    }
-
     .final {
       color: #fff;
       background:
@@ -476,6 +481,13 @@
       color: rgba(255, 255, 255, .82);
     }
 
+    .final-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+
     .footer {
       padding: 32px 0;
       background: #070717;
@@ -489,8 +501,7 @@
       }
 
       .hero-inner,
-      .section-head,
-      .payment {
+      .section-head {
         grid-template-columns: 1fr;
       }
 
@@ -558,13 +569,52 @@
         min-width: 660px;
       }
     }
+
+    @media print {
+      @page {
+        size: A4;
+        margin: 0;
+      }
+
+      body {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+
+      .topbar,
+      .hero-actions,
+      .final-actions {
+        display: none !important;
+      }
+
+      .hero {
+        min-height: 0;
+      }
+
+      .hero-inner {
+        min-height: 0;
+        padding: 42px 0;
+      }
+
+      .section {
+        padding: 42px 0;
+        break-inside: avoid;
+      }
+
+      .card,
+      .timeline-row,
+      .decision-table,
+      .status-panel {
+        break-inside: avoid;
+      }
+    }
   </style>
 </head>
 <body>
   <header class="topbar">
     <nav class="nav" aria-label="Glavna navigacija">
       <a class="brand" href="#top" aria-label="Tixety Cibona početak">
-        <span class="mark">T</span>
+        <span class="mark"><img src="assets/cibona-logo.png" alt="" /></span>
         <span>Tixety / Cibona</span>
       </a>
       <div class="navlinks">
@@ -573,6 +623,7 @@
         <a href="#payment">Payment</a>
         <a href="#timeline">Timeline</a>
         <a href="#faza-2">Faza 2</a>
+        <a class="download-link" href="cibona-tixety-plan.pdf" download>Preuzmi PDF</a>
       </div>
     </nav>
   </header>
@@ -582,15 +633,15 @@
       <div class="hero-inner">
         <div>
           <div class="kicker">Specifikacija / plan pokretanja prodaje</div>
-          <h1>Pokretanje prodaje ulaznica do 10.07.</h1>
+          <h1>Radni plan uvođenja Cibona Tixety sustava</h1>
           <p class="hero-copy">Plan za Cibona ticketing kroz postojeći fanshop, Tixety prodajni link i Stripe payment sloj.</p>
           <div class="hero-actions">
             <a class="button" href="#timeline">Pogledaj plan</a>
-            <a class="button secondary" href="#odluka">Sažetak za odluku</a>
+            <a class="button accent" href="cibona-tixety-plan.pdf" download>Preuzmi PDF</a>
           </div>
           <div class="meta" aria-label="Podaci dokumenta">
-            <div><strong>Pripremio</strong>ORKA d.o.o.</div>
-            <div><strong>Za</strong>Cibona / MPR</div>
+            <div><strong>Izvođač</strong>ORKA d.o.o.</div>
+            <div><strong>Klijent</strong>Cibona</div>
             <div><strong>Datum</strong>17.06.2026.</div>
           </div>
         </div>
@@ -601,10 +652,10 @@
             <span class="badge">10.07.</span>
           </div>
           <ol class="steps">
-            <li><span>1</span><div>Zaključati ticket proizvode, cijene i kontingente.</div></li>
-            <li><span>2</span><div>Povezati fanshop, Tixety link i Stripe testni tok.</div></li>
-            <li><span>3</span><div>Provesti testne kupnje, potvrde i operativne iznimke.</div></li>
-            <li><span>4</span><div>Objaviti prodajne linkove i otvoriti prodaju.</div></li>
+            <li><span>1</span><div>Postaviti ispravno sjedala i shemu rasporeda sjedenja.</div></li>
+            <li><span>2</span><div>Definirati cijene i proizvode/karte.</div></li>
+            <li><span>3</span><div>Povezati fanshop, Tixety link i Stripe testni tok.</div></li>
+            <li><span>4</span><div>Provesti testne kupnje i otvoriti prodaju.</div></li>
           </ol>
         </aside>
       </div>
@@ -616,7 +667,7 @@
           <div>
             <div class="kicker">Cilj dokumenta</div>
             <h2>Najkraći siguran put do početka prodaje</h2>
-            <p class="lead">Prva faza ne pokušava odmah završiti cijeli ticketing ekosustav. Cilj je stabilan prodajni tok koji se kasnije može širiti prema direktnom Tixety checkoutu, sezonskim kartama, korisničkim profilima, scanneru, CRM-u i fan commerce modelu.</p>
+            <p class="lead">U prvoj fazi cilj je uspostaviti preduvjete za prodaju karata, vezanih i upsell proizvoda te pripremiti se za prve utakmice ili simulacije. Nakon toga cilj je nastavak implementacije ostalih white-label sustava Tixety: direktni checkout, sezonske karte, korisnički profili, scanner, CRM, fan commerce, fiskalizacija i sustav za ulazak u dvoranu.</p>
           </div>
           <div class="note">Kupac na dan 10.07.2026. može kupiti ulaznicu preko dogovorenog fanshop/e-commerce toka i/ili Tixety prodajnog linka.</div>
         </div>
@@ -635,50 +686,13 @@
           <article class="card">
             <span class="card-number">3</span>
             <h3>Otvorena arhitektura</h3>
-            <p>Payment sloj ostaje spreman za Monri i druge providere.</p>
+            <p>Monri se uključuje nakon potrebnih potpisivanja i integracije s njima, a payment sloj ostaje spreman i za druge providere.</p>
           </article>
           <article class="card">
             <span class="card-number">4</span>
             <h3>Go-live 10.07.</h3>
             <p>Kupac može kupiti ulaznicu preko fanshopa i/ili Tixety linka.</p>
           </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section alt" id="odluka">
-      <div class="wrap">
-        <div class="section-head">
-          <div>
-            <div class="kicker">Sažetak</div>
-            <h2>Sažetak za odluku</h2>
-          </div>
-          <p class="lead">Referentni pilot s realnim rokom, mjerljivom prodajom i arhitekturom koja ne zatvara kasnije širenje proizvoda.</p>
-        </div>
-
-        <div class="decision-table">
-          <table>
-            <thead>
-              <tr>
-                <th>Cjelina</th>
-                <th>Sažetak</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>Što Cibona dobiva</td>
-                <td>Prodajni kanal za ulaznice koji se može komunicirati kroz fanshop, cibona.com, društvene mreže, newsletter i kampanje.</td>
-              </tr>
-              <tr>
-                <td>Što MPR dobiva</td>
-                <td>Referentni pilot s realnim go-liveom, mjerljivom prodajom i osnovom za širenje proizvoda.</td>
-              </tr>
-              <tr>
-                <td>Što ORKA isporučuje</td>
-                <td>Integracijsku logiku, Tixety link, konfiguraciju prodajnih tokova, payment povezivanje, pregled narudžbi i plan širenja.</td>
-              </tr>
-            </tbody>
-          </table>
         </div>
       </div>
     </section>
@@ -729,15 +743,7 @@
           <div class="note blue">Za 10.07. preporuka je najbrži siguran fiskalizacijski tok: postojeći fanshop ako je operativno spreman, ili Tixety fiskalizacija samo ako se može potvrditi bez rizika za rok.</div>
         </div>
 
-        <div class="payment">
-          <div class="payment-map" aria-label="Payment tok">
-            <div class="payment-node"><strong>Kupac</strong><small>Web / mobile</small></div>
-            <div class="payment-node"><strong>Fanshop ili Tixety link</strong><small>Prodaja</small></div>
-            <div class="payment-node"><strong>Payment sloj</strong><small>Routing</small></div>
-            <div class="payment-node"><strong>Stripe</strong><small>Start</small></div>
-          </div>
-
-          <div class="decision-table">
+        <div class="decision-table">
             <table>
               <thead>
                 <tr>
@@ -755,7 +761,7 @@
                 <tr>
                   <td>Monri</td>
                   <td>Opcija sljedeće faze.</td>
-                  <td>Koristan za lokalne metode, potencijalno rate i regionalni payment ekosustav.</td>
+                  <td>Proradit će nakon potrebnih potpisivanja i integracije s Monrijem.</td>
                 </tr>
                 <tr>
                   <td>Aircash / KEKS</td>
@@ -764,7 +770,6 @@
                 </tr>
               </tbody>
             </table>
-          </div>
         </div>
       </div>
     </section>
@@ -776,27 +781,26 @@
             <div class="kicker">Timeline</div>
             <h2>Plan provedbe do 10.07.</h2>
           </div>
-          <p class="lead">Raspored drži opseg pod kontrolom: prvo odluke, zatim konfiguracija, testiranje i završna go-live priprema.</p>
         </div>
 
         <div class="timeline">
           <div class="timeline-row">
-            <div class="date">17.06. - 20.06.</div>
-            <div><strong>Zaključavanje opsega</strong><p>Potvrditi proizvode, cijene, kontingente i Stripe model.</p></div>
-            <div><strong>Isporuka</strong><p>Potvrđen fiskalizacijski scenarij i prodajni model za start.</p></div>
+            <div class="date">19.06. - 29.06.</div>
+            <div><strong>Zaključavanje opsega</strong><p>Potvrditi proizvode, cijene, kontingente, shemu rasporeda sjedenja i kontakt s providerom aplikacije/fanshopa.</p></div>
+            <div><strong>Isporuka</strong><p>Potvrđen prodajni model, ulazni podaci za sjedala i tehnički kontakt za integraciju.</p></div>
           </div>
           <div class="timeline-row">
-            <div class="date">21.06. - 27.06.</div>
+            <div class="date">30.06. - 03.07.</div>
             <div><strong>Postavljanje prodajnog toka</strong><p>Konfigurirati proizvode, Tixety link i vezu s fanshopom.</p></div>
             <div><strong>Isporuka</strong><p>Stripe testni tok i prvi operativni prodajni scenariji.</p></div>
           </div>
           <div class="timeline-row">
-            <div class="date">28.06. - 04.07.</div>
+            <div class="date">04.07. - 07.07.</div>
             <div><strong>Testiranje</strong><p>Testne kupnje, potvrde, izvještaji i operativne iznimke.</p></div>
             <div><strong>Isporuka</strong><p>Validiran checkout, narudžbe, potvrde i fiskalizacija.</p></div>
           </div>
           <div class="timeline-row">
-            <div class="date">05.07. - 09.07.</div>
+            <div class="date">08.07. - 09.07.</div>
             <div><strong>Go-live priprema</strong><p>Završna provjera, objave linkova i podrška.</p></div>
             <div><strong>Isporuka</strong><p>Spreman eskalacijski kanal i komunikacijski paket.</p></div>
           </div>
@@ -816,7 +820,6 @@
             <div class="kicker">Faza 2</div>
             <h2>Puni Tixety / fan commerce</h2>
           </div>
-          <p class="lead">Nakon stabilnog starta, ticketing se može širiti prema direktnoj prodaji, sezonskim modelima, bundleovima i CRM-u.</p>
         </div>
 
         <div class="grid two">
@@ -840,6 +843,16 @@
             <h3>CRM i fan intelligence</h3>
             <p>Segmentacija navijača, povijest kupnji, kampanje i loyalty modeli.</p>
           </article>
+          <article class="card">
+            <span class="card-number">5</span>
+            <h3>Fiskalizacija</h3>
+            <p>Usklađen fiskalni tok za direktnu prodaju i buduće payment providere.</p>
+          </article>
+          <article class="card">
+            <span class="card-number">6</span>
+            <h3>Ulazak u dvoranu</h3>
+            <p>Sustav za provjeru karata, skeniranje i operativnu kontrolu ulaza.</p>
+          </article>
         </div>
       </div>
     </section>
@@ -849,6 +862,9 @@
         <div class="kicker">Zaključak</div>
         <h2>Predloženi smjer</h2>
         <p class="lead">Za prvu fazu predlaže se kontrolirano pokretanje prodaje do 10.07. kroz postojeći fanshop/e-commerce kanal i Tixety prodajni link, uz Stripe kao primarni payment provider. Arhitektura ostaje otvorena za Monri i druge lokalne metode plaćanja u sljedećoj fazi.</p>
+        <div class="final-actions">
+          <a class="button accent" href="cibona-tixety-plan.pdf" download>Preuzmi PDF</a>
+        </div>
       </div>
     </section>
   </main>
