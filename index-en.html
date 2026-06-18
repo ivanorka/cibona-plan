@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="hr">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Radni plan uvođenja Cibona Tixety sustava</title>
+  <title>Working plan for the Cibona Tixety system rollout</title>
   <link rel="alternate" hreflang="hr" href="index.html" />
   <link rel="alternate" hreflang="en" href="index-en.html" />
   <style>
@@ -632,21 +632,21 @@
 </head>
 <body>
   <header class="topbar">
-    <nav class="nav" aria-label="Glavna navigacija">
-      <a class="brand" href="#top" aria-label="Tixety Cibona početak">
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#top" aria-label="Tixety Cibona start">
         <span class="mark"><img src="assets/cibona-logo.png" alt="" /></span>
         <span>Tixety / Cibona</span>
       </a>
       <div class="navlinks">
-        <a href="#uvod">Uvod</a>
-        <a href="#start">Start prodaje</a>
+        <a href="#intro">Intro</a>
+        <a href="#start">Sales launch</a>
         <a href="#payment">Payment</a>
         <a href="#timeline">Timeline</a>
-        <a href="#faza-2">Faza 2</a>
+        <a href="#phase-2">Phase 2</a>
         <a class="download-link" href="cibona-tixety-plan.pdf" download>PDF HR</a>
         <a class="download-link" href="cibona-tixety-plan-en.pdf" download>PDF EN</a>
       </div>
-      <a class="lang-switch" href="index-en.html" hreflang="en" aria-label="English version">EN</a>
+      <a class="lang-switch" href="index.html" hreflang="hr" aria-label="Croatian version">HR</a>
     </nav>
   </header>
 
@@ -654,67 +654,67 @@
     <section class="hero">
       <div class="hero-inner">
         <div>
-          <div class="kicker">Specifikacija / plan pokretanja prodaje</div>
-          <h1>Radni plan uvođenja Cibona Tixety sustava</h1>
-          <p class="hero-copy">Plan za Cibona ticketing kroz postojeći fanshop, Tixety prodajni link i Stripe payment sloj.</p>
+          <div class="kicker">Specification / sales launch plan</div>
+          <h1>Working plan for the Cibona Tixety system rollout</h1>
+          <p class="hero-copy">Plan for Cibona ticketing through the existing fanshop, Tixety sales link and Stripe payment layer.</p>
           <div class="hero-actions">
-            <a class="button" href="#timeline">Pogledaj plan</a>
-            <a class="button accent" href="cibona-tixety-plan.pdf" download>Preuzmi PDF</a>
-            <a class="button secondary" href="cibona-tixety-plan-en.pdf" download>PDF EN</a>
+            <a class="button" href="#timeline">View plan</a>
+            <a class="button accent" href="cibona-tixety-plan-en.pdf" download>Download PDF</a>
+            <a class="button secondary" href="cibona-tixety-plan.pdf" download>PDF HR</a>
           </div>
-          <div class="meta" aria-label="Podaci dokumenta">
-            <div><strong>Izvođač</strong>ORKA d.o.o.</div>
-            <div><strong>Klijent</strong>Cibona</div>
-            <div><strong>Datum</strong>17.06.2026.</div>
+          <div class="meta" aria-label="Document details">
+            <div><strong>Contractor</strong>ORKA d.o.o.</div>
+            <div><strong>Client</strong>Cibona</div>
+            <div><strong>Date</strong>17.06.2026.</div>
           </div>
         </div>
 
-        <aside class="status-panel" aria-label="Status plana">
+        <aside class="status-panel" aria-label="Plan status">
           <div class="status-head">
-            <strong>Go-live fokus</strong>
+            <strong>Go-live focus</strong>
             <span class="badge">10.07.</span>
           </div>
           <ol class="steps">
-            <li><span>1</span><div>Postaviti ispravno sjedala i shemu rasporeda sjedenja.</div></li>
-            <li><span>2</span><div>Definirati cijene i proizvode/karte.</div></li>
-            <li><span>3</span><div>Povezati fanshop, Tixety link i Stripe testni tok.</div></li>
-            <li><span>4</span><div>Provesti testne kupnje i otvoriti prodaju.</div></li>
+            <li><span>1</span><div>Set up seats and the seating layout correctly.</div></li>
+            <li><span>2</span><div>Define prices and products/tickets.</div></li>
+            <li><span>3</span><div>Connect the fanshop, Tixety link and Stripe test flow.</div></li>
+            <li><span>4</span><div>Run test purchases and open sales.</div></li>
           </ol>
         </aside>
       </div>
     </section>
 
-    <section class="section" id="uvod">
+    <section class="section" id="intro">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">Cilj dokumenta</div>
-            <h2>Najkraći siguran put do početka prodaje</h2>
-            <p class="lead">U prvoj fazi cilj je uspostaviti preduvjete za prodaju karata, vezanih i upsell proizvoda te pripremiti se za prve utakmice ili simulacije. Nakon toga cilj je nastavak implementacije ostalih white-label sustava Tixety: direktni checkout, sezonske karte, korisnički profili, scanner, CRM, fan commerce, fiskalizacija i sustav za ulazak u dvoranu.</p>
+            <div class="kicker">Document objective</div>
+            <h2>The fastest safe path to sales launch</h2>
+            <p class="lead">In phase one, the goal is to establish the prerequisites for selling tickets, related and upsell products, and to prepare for the first games or simulations. After that, the goal is to continue implementing the remaining Tixety white-label systems: direct checkout, season tickets, user profiles, scanner, CRM, fan commerce, fiscalization and the venue entry system.</p>
           </div>
-          <div class="note">Kupac na dan 10.07.2026. može kupiti ulaznicu preko dogovorenog fanshop/e-commerce toka i/ili Tixety prodajnog linka.</div>
+          <div class="note">On 10.07.2026, the buyer can purchase a ticket through the agreed fanshop/e-commerce flow and/or Tixety sales link.</div>
         </div>
 
         <div class="grid">
           <article class="card">
             <span class="card-number">1</span>
-            <h3>E-commerce integracija</h3>
-            <p>Povezivanje Tixety prodajne logike s postojećim dobavljačem fanshopa.</p>
+            <h3>E-commerce integration</h3>
+            <p>Connecting Tixety sales logic with the existing fanshop provider.</p>
           </article>
           <article class="card">
             <span class="card-number">2</span>
             <h3>Stripe payment</h3>
-            <p>Stripe kao primarni provider za kartice, Apple Pay i Google Pay.</p>
+            <p>Stripe as the primary provider for cards, Apple Pay and Google Pay.</p>
           </article>
           <article class="card">
             <span class="card-number">3</span>
-            <h3>Otvorena arhitektura</h3>
-            <p>Monri se uključuje nakon potrebnih potpisivanja i integracije s njima, a payment sloj ostaje spreman i za druge providere.</p>
+            <h3>Open architecture</h3>
+            <p>Monri is added after the required signing and integration with them, while the payment layer remains ready for other providers.</p>
           </article>
           <article class="card">
             <span class="card-number">4</span>
             <h3>Go-live 10.07.</h3>
-            <p>Kupac može kupiti ulaznicu preko fanshopa i/ili Tixety linka.</p>
+            <p>The buyer can purchase a ticket through the fanshop and/or Tixety link.</p>
           </article>
         </div>
       </div>
@@ -724,32 +724,32 @@
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">Faza 1</div>
-            <h2>Start prodaje do 10.07.</h2>
-            <p class="lead">Tixety se postavlja kao prodajni i integracijski sloj koji koristi postojeći fanshop/e-commerce kanal za što brži izlazak na tržište.</p>
+            <div class="kicker">Phase 1</div>
+            <h2>Sales launch by 10.07.</h2>
+            <p class="lead">Tixety is positioned as the sales and integration layer that uses the existing fanshop/e-commerce channel for the fastest path to market.</p>
           </div>
         </div>
 
         <div class="grid two">
           <article class="card">
             <span class="card-number">A</span>
-            <h3>Ticket proizvodi</h3>
-            <p>Kategorije ulaznica, cijene, kontingenti, opisi proizvoda i pravila kupnje.</p>
+            <h3>Ticket products</h3>
+            <p>Ticket categories, prices, allocations, product descriptions and purchase rules.</p>
           </article>
           <article class="card">
             <span class="card-number">B</span>
-            <h3>Fanshop povezivanje</h3>
-            <p>Tehnički način prikaza i kupnje ulaznica kroz postojeći fanshop ili povezani checkout.</p>
+            <h3>Fanshop connection</h3>
+            <p>Technical setup for displaying and purchasing tickets through the existing fanshop or connected checkout.</p>
           </article>
           <article class="card">
             <span class="card-number">C</span>
-            <h3>Tixety prodajni link</h3>
-            <p>Link za kampanje, društvene mreže, newsletter, WhatsApp i objave na cibona.com.</p>
+            <h3>Tixety sales link</h3>
+            <p>Link for campaigns, social media, newsletter, WhatsApp and cibona.com announcements.</p>
           </article>
           <article class="card">
             <span class="card-number">D</span>
             <h3>Stripe checkout</h3>
-            <p>Kartice, Apple Pay i Google Pay kao primarni payment tok.</p>
+            <p>Cards, Apple Pay and Google Pay as the primary payment flow.</p>
           </article>
         </div>
       </div>
@@ -760,10 +760,10 @@
         <div class="section-head">
           <div>
             <div class="kicker">Payment</div>
-            <h2>Odvojeni payment sloj</h2>
-            <p class="lead">Svaka narudžba evidentira providera preko kojeg je plaćena, a novi provider može se uključiti za buduće transakcije.</p>
+            <h2>Separate payment layer</h2>
+            <p class="lead">Each order records the provider through which it was paid, and a new provider can be enabled for future transactions.</p>
           </div>
-          <div class="note blue">Za 10.07. preporuka je najbrži siguran fiskalizacijski tok: postojeći fanshop ako je operativno spreman, ili Tixety fiskalizacija samo ako se može potvrditi bez rizika za rok.</div>
+          <div class="note blue">For 10.07., the recommended approach is the fastest safe fiscalization flow: the existing fanshop if it is operationally ready, or Tixety fiscalization only if it can be confirmed without risk to the deadline.</div>
         </div>
 
         <div class="decision-table">
@@ -771,25 +771,25 @@
               <thead>
                 <tr>
                   <th>Provider</th>
-                  <th>Uloga</th>
-                  <th>Napomena</th>
+                  <th>Role</th>
+                  <th>Note</th>
                 </tr>
               </thead>
               <tbody>
                 <tr>
                   <td>Stripe</td>
-                  <td>Primarni provider za start prodaje do 10.07.</td>
-                  <td>Kartice, Apple Pay i Google Pay kroz jedan payment sloj.</td>
+                  <td>Primary provider for sales launch by 10.07.</td>
+                  <td>Cards, Apple Pay and Google Pay through one payment layer.</td>
                 </tr>
                 <tr>
                   <td>Monri</td>
-                  <td>Opcija sljedeće faze.</td>
-                  <td>Proradit će nakon potrebnih potpisivanja i integracije s Monrijem.</td>
+                  <td>Option for the next phase.</td>
+                  <td>It will become active after the required signing and integration with Monri.</td>
                 </tr>
                 <tr>
                   <td>Aircash / KEKS</td>
-                  <td>Kasniji lokalni dodatci.</td>
-                  <td>Uključiti nakon go-livea prema poslovnoj potrebi i uvjetima.</td>
+                  <td>Later local additions.</td>
+                  <td>To be added after go-live based on business needs and terms.</td>
                 </tr>
               </tbody>
             </table>
@@ -802,79 +802,79 @@
         <div class="section-head">
           <div>
             <div class="kicker">Timeline</div>
-            <h2>Plan provedbe do 10.07.</h2>
+            <h2>Implementation plan by 10.07.</h2>
           </div>
         </div>
 
         <div class="timeline">
           <div class="timeline-row">
             <div class="date">19.06. - 29.06.</div>
-            <div><strong>Zaključavanje opsega</strong><p>Potvrditi proizvode, cijene, kontingente, shemu rasporeda sjedenja i kontakt s providerom aplikacije/fanshopa.</p></div>
-            <div><strong>Isporuka</strong><p>Potvrđen prodajni model, ulazni podaci za sjedala i tehnički kontakt za integraciju.</p></div>
+            <div><strong>Scope lock</strong><p>Confirm products, prices, allocations, seating layout and contact with the application/fanshop provider.</p></div>
+            <div><strong>Deliverable</strong><p>Confirmed sales model, seat input data and technical contact for integration.</p></div>
           </div>
           <div class="timeline-row">
             <div class="date">30.06. - 03.07.</div>
-            <div><strong>Postavljanje prodajnog toka</strong><p>Konfigurirati proizvode, Tixety link i vezu s fanshopom.</p></div>
-            <div><strong>Isporuka</strong><p>Stripe testni tok i prvi operativni prodajni scenariji.</p></div>
+            <div><strong>Sales flow setup</strong><p>Configure products, Tixety link and fanshop connection.</p></div>
+            <div><strong>Deliverable</strong><p>Stripe test flow and first operational sales scenarios.</p></div>
           </div>
           <div class="timeline-row">
             <div class="date">04.07. - 07.07.</div>
-            <div><strong>Testiranje</strong><p>Testne kupnje, potvrde, izvještaji i operativne iznimke.</p></div>
-            <div><strong>Isporuka</strong><p>Validiran checkout, narudžbe, potvrde i fiskalizacija.</p></div>
+            <div><strong>Testing</strong><p>Test purchases, confirmations, reports and operational exceptions.</p></div>
+            <div><strong>Deliverable</strong><p>Validated checkout, orders, confirmations and fiscalization.</p></div>
           </div>
           <div class="timeline-row">
             <div class="date">08.07. - 09.07.</div>
-            <div><strong>Go-live priprema</strong><p>Završna provjera, objave linkova i podrška.</p></div>
-            <div><strong>Isporuka</strong><p>Spreman eskalacijski kanal i komunikacijski paket.</p></div>
+            <div><strong>Go-live preparation</strong><p>Final checks, link announcements and support.</p></div>
+            <div><strong>Deliverable</strong><p>Escalation channel and communication package ready.</p></div>
           </div>
           <div class="timeline-row">
             <div class="date">10.07.</div>
-            <div><strong>Početak prodaje</strong><p>Prodaja ulaznica kreće preko dogovorenog kanala.</p></div>
-            <div><strong>Isporuka</strong><p>Fanshop i/ili Tixety prodajni link dostupni kupcima.</p></div>
+            <div><strong>Sales launch</strong><p>Ticket sales start through the agreed channel.</p></div>
+            <div><strong>Deliverable</strong><p>Fanshop and/or Tixety sales link available to buyers.</p></div>
           </div>
         </div>
       </div>
     </section>
 
-    <section class="section alt" id="faza-2">
+    <section class="section alt" id="phase-2">
       <div class="wrap">
         <div class="section-head">
           <div>
-            <div class="kicker">Faza 2</div>
-            <h2>Puni Tixety / fan commerce</h2>
+            <div class="kicker">Phase 2</div>
+            <h2>Full Tixety / fan commerce</h2>
           </div>
         </div>
 
         <div class="grid two">
           <article class="card">
             <span class="card-number">1</span>
-            <h3>Direktni Tixety checkout</h3>
-            <p>Samostalni checkout s odabranim providerom.</p>
+            <h3>Direct Tixety checkout</h3>
+            <p>Standalone checkout with the selected provider.</p>
           </article>
           <article class="card">
             <span class="card-number">2</span>
-            <h3>Season ticket modeli</h3>
-            <p>Sezonske karte, obiteljski paketi, VIP paketi, poslovni paketi i članstvo.</p>
+            <h3>Season ticket models</h3>
+            <p>Season tickets, family packages, VIP packages, business packages and membership.</p>
           </article>
           <article class="card">
             <span class="card-number">3</span>
-            <h3>Fanshop bundleovi</h3>
-            <p>Ulaznica + majica, ulaznica + šal, season ticket + fan paket.</p>
+            <h3>Fanshop bundles</h3>
+            <p>Ticket + shirt, ticket + scarf, season ticket + fan package.</p>
           </article>
           <article class="card">
             <span class="card-number">4</span>
-            <h3>CRM i fan intelligence</h3>
-            <p>Segmentacija navijača, povijest kupnji, kampanje i loyalty modeli.</p>
+            <h3>CRM and fan intelligence</h3>
+            <p>Fan segmentation, purchase history, campaigns and loyalty models.</p>
           </article>
           <article class="card">
             <span class="card-number">5</span>
-            <h3>Fiskalizacija</h3>
-            <p>Usklađen fiskalni tok za direktnu prodaju i buduće payment providere.</p>
+            <h3>Fiscalization</h3>
+            <p>Compliant fiscal flow for direct sales and future payment providers.</p>
           </article>
           <article class="card">
             <span class="card-number">6</span>
-            <h3>Ulazak u dvoranu</h3>
-            <p>Sustav za provjeru karata, skeniranje i operativnu kontrolu ulaza.</p>
+            <h3>Venue entry</h3>
+            <p>Ticket verification, scanning and operational entry control system.</p>
           </article>
         </div>
       </div>
@@ -882,12 +882,12 @@
 
     <section class="section final">
       <div class="wrap">
-        <div class="kicker">Zaključak</div>
-        <h2>Predloženi smjer</h2>
-        <p class="lead">Za prvu fazu predlaže se kontrolirano pokretanje prodaje do 10.07. kroz postojeći fanshop/e-commerce kanal i Tixety prodajni link, uz Stripe kao primarni payment provider. Arhitektura ostaje otvorena za Monri i druge lokalne metode plaćanja u sljedećoj fazi.</p>
+        <div class="kicker">Conclusion</div>
+        <h2>Proposed direction</h2>
+        <p class="lead">For phase one, we propose a controlled sales launch by 10.07. through the existing fanshop/e-commerce channel and Tixety sales link, with Stripe as the primary payment provider. The architecture remains open for Monri and other local payment methods in the next phase.</p>
         <div class="final-actions">
-          <a class="button accent" href="cibona-tixety-plan.pdf" download>Preuzmi PDF</a>
-          <a class="button secondary" href="cibona-tixety-plan-en.pdf" download>PDF EN</a>
+          <a class="button accent" href="cibona-tixety-plan-en.pdf" download>Download PDF</a>
+          <a class="button secondary" href="cibona-tixety-plan.pdf" download>PDF HR</a>
         </div>
       </div>
     </section>
